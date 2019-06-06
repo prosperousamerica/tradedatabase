@@ -1,0 +1,251 @@
+@import url("https://use.fontawesome.com/releases/v5.7.2/css/all.css");
+@import url("https://code.highcharts.com/css/highcharts.css");
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Serif:300,300i,400,400i,500,500i,700,700i");
+@import url("https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,500i,700,700i");
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900");
+
+/*********************************
+ Globals
+*********************************/
+$font: "IBM Plex Serif", serif;
+$basicfont: "Roboto", sans-serif;
+// $font: "EB Garamond", serif;
+$red: #ad1e23;
+$blue: #23408f;
+
+/*********************************
+ Font Awesome icon mixin
+*********************************/
+@mixin fontawesome {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+} 
+
+/*********************************
+ General styles
+*********************************/
+h2.headline {
+  font-family: $basicfont;
+  font-weight: bold;
+  font-weight: 200;
+  font-size: 3em;
+  line-height: 1.2;
+  
+  @media (max-width: 800px){
+    font-size: 2.5em;
+  }
+}
+
+.cfpa-chart-container {
+  width: 33%;
+  float: left;
+}
+
+.text-content {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $basicfont;
+  }
+
+  h3 {
+    font-size: 1.5em;
+    font-weight: normal;
+    font-style: italic;
+    opacity: 0.6;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1em;
+  }
+}
+
+/*********************************
+ Menu
+*********************************/
+$menu-icon-color: lighten($red, 30%);
+.tradedata-menu {
+  display: block !important;
+  font-family: $basicfont;
+  // Needs explicit position and z-index or it's not clickable behind the adjacent header
+  position: relative;
+  z-index: 1;
+  
+  margin: 0 0 2em 2em;
+  margin-top: 3.1em; // Compensate for back button
+  width: 500px;
+  float: right;
+  
+
+  li {
+    width: 50%;
+    float: left;
+    
+  }
+  ul, li {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  li a {
+    color: #999 !important;
+    border-bottom: 1px solid #eee !important;
+    font-weight: 300 !important;
+    em {
+       display: none !important;
+    }
+    &:hover {
+      background: inherit !important;
+      color: $menu-icon-color !important;
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .tradedata-menu {
+    width: 250px;
+    li {
+      width: 100%;
+      float: none;
+    }
+  }
+}
+
+
+@media (max-width: 600px) {
+  .tradedata-menu {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    font-size: .9em;
+    li {
+      width: unset;
+      float: none;
+      display: inline-block;
+      margin-right: .5em;
+    }
+  }
+}
+
+.page-tradedata .text-content h2 {
+  font-size: 24px;
+  line-height: 1.2;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  a {
+    padding: 1em 0.75em;
+  }
+}
+
+.tradedata-menu li a {
+  padding: 0.5em 0.75em;
+}
+
+.tradedata-menu li a,
+.page-tradedata .text-content h2 a {
+  color: #444;
+  font-weight: bold;
+  display: block;
+  // padding: 0.5em 0.75em;
+  text-decoration: none;
+  border-bottom: 1px solid #ddd;
+  transition: all 0.2s ease-in-out;
+
+  em {
+    display: block;
+    color: #888;
+    font-weight: normal;
+    font-weight: 300;
+    font-family: $basicfont;
+    font-weight: 200;
+    font-family: $font;
+    margin-top: .2em;
+    font-size: 0.8em;
+  }
+  
+  &:hover {
+    background: #eee;
+    // transform: scale(1.01);
+    transform: translate(12px);
+
+    // i.fas, i.fao, // If using Font-Awesome elements
+    &:first-letter {
+      color: $red;
+    }
+  }
+
+  // i.fas, i.fao,  // If using Font-Awesome elements
+  &:first-letter {
+    @include fontawesome;
+    width: 1em;
+    padding-right: 0.4em;
+    text-shadow: none;
+    margin-right: 0.3em;
+    color: $menu-icon-color;
+    transition: all 0.2s ease-in-out;
+  }
+}
+
+// Active styling for menu
+.tradedata-menu[active-page="tradedata"]        a[href*="tradedata"],
+.tradedata-menu[active-page="trade-balance"]    a[href*="trade-balance"],
+.tradedata-menu[active-page="trade-global"]     a[href*="trade-global"],
+.tradedata-menu[active-page="trade-bilateral"]  a[href*="trade-bilateral"],
+.tradedata-menu[active-page="trade-currency"]   a[href*="trade-currency"],
+.tradedata-menu[active-page="trade-technology"] a[href*="trade-technology"] {
+  // font-weight: bold !important;
+  color: $menu-icon-color !important;
+  &:hover {
+    transform: none;
+    &:first-letter {
+      color: $menu-icon-color !important;
+    }
+  }
+}
+
+@mixin homeIcon {
+  @include fontawesome;
+  content: '';
+  margin-right: .3em;
+  color: $menu-icon-color;
+}
+
+// Home button
+a.tradedata-home-button {
+    font-family: Roboto;
+    font-weight: 300;
+    margin-bottom: 1em;
+    display: block;
+    font-size: 1.3em;
+    margin-top: -1em;
+  &:before {
+    @include homeIcon;
+    color: lighten($blue, 40%);
+  }
+}
+
+.page-tradedata .headline:before {
+  @include homeIcon;
+  color: lighten($blue, 40%);
+  color: #ccc;
+}
+
+
+// $page-slugs: (
+//   'tradedata',
+//   'trade-balance',
+//   'trade-global',
+//   'trade-bilateral',
+//   'trade-currency',
+//   'trade-technology'
+// );
+
+// @each $slug in $page-slugs {
+//   .trade-menu[active-page="#{$slug}"] a[href*="#{$slug}"] {
+    
+//   }
+// }
