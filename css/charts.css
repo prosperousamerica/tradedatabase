@@ -27,11 +27,16 @@
   position: relative;
   margin-bottom: 1.5em;
 }
+
 #charts.trade-monthly .chart-blurb {
   position: absolute;
   font-size: .8em;
   bottom: -20px;
   opacity: .6;
+}
+
+.chart-global-imbalances {
+    margin: 2em 0 1em;
 }
 
 .highcharts-negative {
