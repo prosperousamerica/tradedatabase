@@ -1,0 +1,215 @@
+@import url("https://use.fontawesome.com/releases/v5.7.2/css/all.css");
+@import url("https://code.highcharts.com/css/highcharts.css");
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Serif:300,300i,400,400i,500,500i,700,700i");
+@import url("https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,500i,700,700i");
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900");
+/*********************************
+ Globals
+*********************************/
+#charts {
+  clear: both;
+}
+
+.text-content-bottom {
+  clear: both;
+}
+
+.text-content-main > ul {
+  display: none;
+}
+
+.chart-blurb {
+  padding: 1em 1em 1.5em 1em;
+  font-size: .9em;
+}
+
+#charts.trade-monthly .chart {
+  position: relative;
+  margin-bottom: 1.5em;
+}
+#charts.trade-monthly .chart-blurb {
+  position: absolute;
+  font-size: .8em;
+  bottom: -20px;
+  opacity: .6;
+}
+
+.highcharts-negative {
+  stroke: #da2e0b;
+}
+
+.highcharts-area {
+  fill-opacity: 0.5 !important;
+}
+
+.highcharts-title,
+.highcharts-axis-title {
+  font-family: "IBM Plex Serif", serif;
+}
+
+.chart {
+  width: 31%;
+  margin: 0 1%;
+  float: left;
+  padding-bottom: 2em;
+}
+.chart .chart-target {
+  height: 260px;
+}
+@media (max-width: 750px) {
+  .chart {
+    width: 46%;
+  }
+}
+@media (max-width: 600px) {
+  .chart {
+    width: 100%;
+    float: none;
+  }
+}
+
+@media (max-width: 750px) {
+  .chart {
+    width: 48%;
+  }
+}
+@media (max-width: 600px) {
+  .chart {
+    width: 100%;
+    float: none;
+  }
+}
+#chart-0 .highcharts-color-0 {
+  stroke: #da2e0b !important;
+  fill: #da2e0b !important;
+}
+
+#chart-1 .highcharts-color-0 {
+  stroke: #da2e0b !important;
+  fill: #da2e0b !important;
+}
+
+#chart-2 .highcharts-color-0 {
+  stroke: #067198 !important;
+  fill: #067198 !important;
+}
+
+#chart-3 .highcharts-color-0 {
+  stroke: #f37c1b !important;
+  fill: #f37c1b !important;
+}
+
+#chart-4 .highcharts-color-0 {
+  stroke: #33ccbd !important;
+  fill: #33ccbd !important;
+}
+
+#chart-5 .highcharts-color-0 {
+  stroke: #736c93 !important;
+  fill: #736c93 !important;
+}
+
+#chart-6 .highcharts-color-0 {
+  stroke: #f5563d !important;
+  fill: #f5563d !important;
+}
+
+#chart-7 .highcharts-color-0 {
+  stroke: #4d4d4d !important;
+  fill: #4d4d4d !important;
+}
+
+#chart-8 .highcharts-color-0 {
+  stroke: #cf3617 !important;
+  fill: #cf3617 !important;
+}
+
+#chart-9 .highcharts-color-0 {
+  stroke: #067198 !important;
+  fill: #067198 !important;
+}
+
+#chart-10 .highcharts-color-0 {
+  stroke: #eb7d24 !important;
+  fill: #eb7d24 !important;
+}
+
+#chart-11 .highcharts-color-0 {
+  stroke: #40bfb3 !important;
+  fill: #40bfb3 !important;
+}
+
+#chart-12 .highcharts-color-0 {
+  stroke: #736c93 !important;
+  fill: #736c93 !important;
+}
+
+#chart-0 .highcharts-color-0 {
+  stroke: #069 !important;
+  fill: #069 !important;
+}
+
+#chart-1 .highcharts-color-0 {
+  stroke: #069 !important;
+  fill: #069 !important;
+}
+
+#chart-2 .highcharts-color-0 {
+  stroke: #069 !important;
+  fill: #069 !important;
+}
+
+#chart-3 .highcharts-color-0 {
+  stroke: #069 !important;
+  fill: #069 !important;
+}
+
+#chart-4 .highcharts-color-0 {
+  stroke: #069 !important;
+  fill: #069 !important;
+}
+
+#chart-5 .highcharts-color-0 {
+  stroke: #069 !important;
+  fill: #069 !important;
+}
+
+#chart-6 .highcharts-color-0 {
+  stroke: #069 !important;
+  fill: #069 !important;
+}
+
+#chart-7 .highcharts-color-0 {
+  stroke: #069 !important;
+  fill: #069 !important;
+}
+
+#chart-8 .highcharts-color-0 {
+  stroke: #069 !important;
+  fill: #069 !important;
+}
+
+#chart-9 .highcharts-color-0 {
+  stroke: #069 !important;
+  fill: #069 !important;
+}
+
+#chart-10 .highcharts-color-0 {
+  stroke: #069 !important;
+  fill: #069 !important;
+}
+
+#chart-11 .highcharts-color-0 {
+  stroke: #069 !important;
+  fill: #069 !important;
+}
+
+#chart-12 .highcharts-color-0 {
+  stroke: #069 !important;
+  fill: #069 !important;
+}
+
+.codepen-body {
+  max-width: 1158px;
+  margin: 0 auto;
+}

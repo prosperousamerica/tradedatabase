@@ -1,0 +1,142 @@
+@import url("https://use.fontawesome.com/releases/v5.7.2/css/all.css");
+@import url("https://code.highcharts.com/css/highcharts.css");
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Serif:300,300i,400,400i,500,500i,700,700i");
+@import url("https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,500i,700,700i");
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900");
+
+/*********************************
+ Globals
+*********************************/
+$font: "IBM Plex Serif", serif;
+$basicfont: "Roboto", sans-serif;
+// $font: "EB Garamond", serif;
+$red: #ad1e23;
+$blue: #23408f;
+
+
+#charts {
+  clear: both;
+}
+
+.text-content-bottom {
+  clear: both;
+  em, i {
+    // color: #ccc;
+  }
+}
+
+// #charts.trade-currency {
+//   .chart {
+//     height: 400px;
+//   }
+// }
+
+// Chart blurbs
+.text-content-main > ul {
+  display: none;
+}
+.chart-blurb {
+  padding: 1em 1em 1.5em 1em;
+  font-size: .9em;
+}
+
+#charts.trade-monthly {
+  .chart {
+    position: relative;
+    margin-bottom: 1.5em;
+  }
+  .chart-blurb {
+    position: absolute;
+    font-size: .8em;
+    bottom: -20px;
+    opacity: .6;
+  }
+}
+
+
+$red: hsl(10, 90%, 45%);
+
+.highcharts-negative {
+  // fill: $red;
+  stroke: $red;
+}
+
+.highcharts-area {
+  fill-opacity: 0.5 !important;
+}
+
+.highcharts-title,
+.highcharts-axis-title {
+  font-family: $font;
+}
+
+.chart {
+  width: 31%;
+  margin: 0 1%;
+  float: left;
+  padding-bottom: 2em;
+  .chart-target {
+    height: 260px;
+  }
+  
+  
+  @media (max-width: 750px) {
+    width: 46%;
+  }
+  
+  
+  @media (max-width: 600px) {
+    width: 100%;
+    float: none;
+  }
+}
+
+  @media (max-width: 750px) {
+    .chart {
+      width: 48%;
+    }
+  }
+  
+  
+  @media (max-width: 600px) {
+    .chart {
+      width: 100%;
+      float: none;
+    }
+
+  }
+$series-colors: (
+  '0'  : hsl(10, 90%, 45%), // Check why first chart in Currencies section is wrong color
+	'1'  : hsl(10, 90%, 45%),
+	'2'  : hsl(196, 92%, 31%),
+	'3'  : hsl(27, 90%, 53%),
+	'4'  : hsl(174, 60%, 50%),
+	'5'  : hsl(251, 15%, 50%),
+	'6'  : hsl(8, 90%, 60%),
+	'7'  : hsl(0, 0%, 30%),
+	'8'  : hsl(10, 80%, 45%),
+	'9'  : hsl(196, 92%, 31%),
+	'10' : hsl(27, 83%, 53%),
+	'11' : hsl(174, 50%, 50%),
+	'12' : hsl(251, 15%, 50%)
+);
+
+@each $index, $color in $series-colors {
+  #chart-#{$index} .highcharts-color-0 {
+      stroke: #{$color} !important;
+      fill: #{$color} !important;
+  }
+}
+
+
+@each $index, $color in $series-colors {
+  #chart-#{$index} .highcharts-color-0 {
+      stroke: #069 !important;
+      fill: #069 !important;
+  }
+}
+
+.codepen-body {
+  max-width: 1158px;
+  margin: 0 auto;
+}
