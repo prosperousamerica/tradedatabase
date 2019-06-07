@@ -459,7 +459,7 @@ var pages = {
       yAxis: [
         {
           title: {
-            text: "<strong>Account Balance</strong> (% of GDP)"
+            text: "% of GDP"
           },
           labels: {}
         }
