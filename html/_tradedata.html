@@ -1,111 +1,113 @@
 <!-- Trade Data template -->
 <div class="page-{{ page.slug }}">
 
-<!-- Note: The Trade Data section requires jQuery, but we will use the default jQuery that is already loaded with the CPA theme -->
-<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script> -->
+	<!-- Note: The Trade Data section requires jQuery, but we will use the default jQuery that is already loaded with the CPA theme -->
+	<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script> -->
 
-<!-- CSV parsing library for chart data files -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.6.3/papaparse.min.js"></script>
+	<!-- CSV parsing library for chart data files -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.6.3/papaparse.min.js"></script>
 
-<!-- Highcharts -->
-{% if page.slug != "trade-bilateral" %}
-	<script src="https://code.highcharts.com/highcharts.js"></script>
-  <script src="https://code.highcharts.com/modules/data.js"></script>
-	<link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/highcharts.css" />
+	<!-- Highcharts -->
+	{% if page.slug != "trade-bilateral" %}
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/data.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/highcharts.css" />
 
-  <!-- Source: https://github.com/prosperousamerica/tradedatabase/blob/master/js/global-imbalances-chart.js -->
-  <script src="https://cdn.jsdelivr.net/gh/prosperousamerica/tradedatabase/js/global-imbalances-chart.js"></script>
-{% endif %}
-
-<!-- Font Awesome icon font for menu icons -->
-<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" />
-
-<!-- Custom styles -->
-<!-- Source: https://github.com/prosperousamerica/tradedatabase/blob/master/css/main.css -->
-<!-- Dev version for testing: https://codepen.io/ericpedia/pen/66608e1c97ee4cf30c4c6324faf06b6f.css -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/prosperousamerica/tradedatabase/css/main.css" />
-
-  
-<!-- Alternate menu style with red blocks -->
-<!-- <link rel="stylesheet" type="text/css" href="https://codepen.io/ericpedia/pen/67ef79d45b5a7b872fcc19c2bb28e099.css" /> -->
-
-<!-- Page template -->
-{% include "breadcrumbs" %}
-
-<div class="like-page">
-	{% include "like_page" %}
-</div>
-
-{% if page.parent.slug == "tradedata" %}
-	<div class="tradedata-menu" style="display: none;" active-page="{{ page.slug }}">
-		<ul>
-			<!-- <li><a href="/tradedata"> Trade Data</a></li> -->
-      <li><a href="/trade-monthly"> US Monthly Trade Data <em>A look at the latest monthly data for US trade balance, exports, and imports</em></a></li>
-			<li><a href="/trade-balance"> US Trade Balance <em>The US trade balance history including key sub-sectors</em></a></li>
-			<li><a href="/trade-bilateral"> US Bilateral Trade <em>Our trade with other nations showing major surpluses and deficits</em></a></li>
-			<li><a href="/trade-technology"> US Advanced Technology <em>Our trade in Advanced Technology products and key sub-sectors of Advanced Technology</em></a></li>
-			<li><a href="/trade-global"> Global Imbalances <em>Current account balance as a percent of GDP for the US and other major nations</em></a></li>
-			<li><a href="/trade-currency"> Exchange Rates <em>Exchange rates for the US dollar and other major currencies</em></a></li>
-		</ul>
-	</div>
-  <a href="/tradedata" class="tradedata-home-button">CPA Trade Database</a>
-{% endif %}
-
-{% if page.headline.size > 0 %}
-	<h2 class="headline">{{ page.headline }}</h2>
-{% endif %}
-
-<div id="content">
-	<div id="intro" class="intro">
-		<div class="text-content">
-      <div class="text-content-main">
-				{{ page.basic.content }}
-      </div>
-
-			{% if page.slug == "trade-technology" or "trade-global" or "trade-balance" or "trade-currency" or "trade-monthly" %}
-				<!-- Chart scripts and styles -->
-      
-      	<!-- Source: https://github.com/prosperousamerica/tradedatabase/blob/master/css/charts.css -->
-				<!-- Dev: https://codepen.io/ericpedia/pen/c92a0b028146bcff55882f7214912252.css -->
-				<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/prosperousamerica/tradedatabase/css/charts.css" />
-      
-    		<!-- Source: https://github.com/prosperousamerica/tradedatabase/blob/master/js/charts.js -->
-      	<!-- Dev: https://codepen.io/ericpedia/pen/c92a0b028146bcff55882f7214912252.js -->
-				<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/prosperousamerica/tradedatabase/js/charts.js" /></script>
-
-    		<!-- Container for the section's dynamically populated charts -->
-    		<div id="charts" class="{{ page.slug }}"></div>
-			{% endif %}
-
-			{% if page.slug == "trade-bilateral" %}
-				<div id="mapcontainer"><!-- Will be dynamically populated by map --></div>
-
-				<!-- Interactive map scripts and styles -->
-				<script type="text/javascript" src="https://code.highcharts.com/maps/highmaps.js"></script>
-				<script type="text/javascript" src="https://code.highcharts.com/mapdata/custom/world.js"></script>
-    
-    		<!-- Source: https://github.com/prosperousamerica/tradedatabase/blob/master/js/map.js -->
-      	<!-- Dev: https://codepen.io/ericpedia/pen/2b840f22357c1f5b67740e419566b9a9.js -->
-				<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/prosperousamerica/tradedatabase/js/map.js" /></script>
-  
-				<style type="text/css">
-					/* Override absolute positioning in theme CSS that causes footer to block content */
-					.inner-body-area .footer-back { position: relative; }
-				</style>
-			{% endif %}
-  		<div class="text-content-bottom"><!-- Will be dynamically populated --></div>
-		</div>
-	</div>
-
-	{% if page.tags_count > 0 %}
-		<div class="page-tags">
-			{% include "page_tags" with page %}
-		</div>
+		<!-- Source: https://github.com/prosperousamerica/tradedatabase/blob/master/js/global-imbalances-chart.js -->
+		<script src="https://cdn.jsdelivr.net/gh/prosperousamerica/tradedatabase@latest/js/global-imbalances-chart.js"></script>
 	{% endif %}
 
-	{% if page.show_stream? %}
-	{% include "page_stream" %}
+	<!-- Font Awesome icon font for menu icons -->
+	<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" />
+
+	<!-- Custom styles -->
+	<!-- Source: https://github.com/prosperousamerica/tradedatabase/blob/master/css/main.css -->
+	<!-- Dev version for testing: https://codepen.io/ericpedia/pen/66608e1c97ee4cf30c4c6324faf06b6f.css -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/prosperousamerica/tradedatabase@latest/css/main.css" />
+
+	<!-- Alternate menu style with red blocks -->
+	<!-- <link rel="stylesheet" type="text/css" href="https://codepen.io/ericpedia/pen/67ef79d45b5a7b872fcc19c2bb28e099.css" /> -->
+
+	<!-- Page template -->
+	{% include "breadcrumbs" %}
+
+	<div class="like-page">
+		{% include "like_page" %}
+	</div>
+
+	{% if page.parent.slug == "tradedata" %}
+		<div class="tradedata-menu" style="display: none;" active-page="{{ page.slug }}">
+			<ul>
+				<!-- <li><a href="/tradedata"> Trade Data</a></li> -->
+			<li><a href="/trade-monthly"> US Monthly Trade Data <em>A look at the latest monthly data for US trade balance, exports, and imports</em></a></li>
+				<li><a href="/trade-balance"> US Trade Balance <em>The US trade balance history including key sub-sectors</em></a></li>
+				<li><a href="/trade-bilateral"> US Bilateral Trade <em>Our trade with other nations showing major surpluses and deficits</em></a></li>
+				<li><a href="/trade-technology"> US Advanced Technology <em>Our trade in Advanced Technology products and key sub-sectors of Advanced Technology</em></a></li>
+				<li><a href="/trade-global"> Global Imbalances <em>Current account balance as a percent of GDP for the US and other major nations</em></a></li>
+				<li><a href="/trade-currency"> Exchange Rates <em>Exchange rates for the US dollar and other major currencies</em></a></li>
+			</ul>
+		</div>
+		<a href="/tradedata" class="tradedata-home-button">CPA Trade Database</a>
 	{% endif %}
 
-</div>
+	{% if page.headline.size > 0 %}
+		<h2 class="headline">{{ page.headline }}</h2>
+	{% endif %}
+
+	<div id="content">
+		<div id="intro" class="intro">
+			<div class="text-content">
+				<div class="text-content-main">
+					{{ page.basic.content }}
+				</div>
+
+				{% if page.slug == "trade-technology" or "trade-global" or "trade-balance" or "trade-currency" or "trade-monthly" %}
+					<!-- Chart scripts and styles -->
+
+					<!-- Source: https://github.com/prosperousamerica/tradedatabase/blob/master/css/charts.css -->
+					<!-- Dev: https://codepen.io/ericpedia/pen/c92a0b028146bcff55882f7214912252.css -->
+					<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/prosperousamerica/tradedatabase@latest/css/charts.css" />
+			
+					<!-- Source: https://github.com/prosperousamerica/tradedatabase/blob/master/js/charts.js -->
+					<!-- Dev: https://codepen.io/ericpedia/pen/c92a0b028146bcff55882f7214912252.js -->
+					<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/prosperousamerica/tradedatabase@latest/js/charts.js" /></script>
+
+					<!-- Container for the section's dynamically populated charts -->
+					<div id="charts" class="{{ page.slug }}"></div>
+				{% endif %}
+
+				{% if page.slug == "trade-bilateral" %}
+					<div id="mapcontainer"><!-- Will be dynamically populated by map --></div>
+
+					<!-- Interactive map scripts and styles -->
+					<script type="text/javascript" src="https://code.highcharts.com/maps/highmaps.js"></script>
+					<script type="text/javascript" src="https://code.highcharts.com/mapdata/custom/world.js"></script>
+
+					<!-- Source: https://github.com/prosperousamerica/tradedatabase/blob/master/js/map.js -->
+					<!-- Dev: https://codepen.io/ericpedia/pen/2b840f22357c1f5b67740e419566b9a9.js -->
+					<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/prosperousamerica/tradedatabase@latest/js/map.js" /></script>
+
+					<style type="text/css">
+						/* Override absolute positioning in theme CSS that causes footer to block content */
+						.inner-body-area .footer-back { position: relative; }
+					</style>
+				{% endif %}
+
+				<!-- Bottom area will be dynamically populated -->
+				<div class="text-content-bottom"></div>
+
+			</div><!-- .text-content -->
+		</div><!-- #intro -->
+
+		{% if page.tags_count > 0 %}
+			<div class="page-tags">
+				{% include "page_tags" with page %}
+			</div>
+		{% endif %}
+
+		{% if page.show_stream? %}
+			{% include "page_stream" %}
+		{% endif %}
+
+	</div><!-- #content -->
 </div>
