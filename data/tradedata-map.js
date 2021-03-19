@@ -21,7 +21,7 @@ window.mapData = [
   { country: "Italy", value: "-29.5", rank: "10" },
   { country: "Jamaica", value: "1.3", rank: "19" },
   { country: "Japan", value: "-55.4", rank: "7" },
-  { country: "South Korea", value: "24.8", rank: "12" },
+  { country: "South Korea", value: "-24.8", rank: "12" },
   { country: "Kuwait", value: "1.6", rank: "18" },
   { country: "Malaysia", value: "-31.7", rank: "8" },
   { country: "Mexico", value: "-112.7", rank: "2" },
